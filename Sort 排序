@@ -12,21 +12,21 @@
 
 Java实现：
 public static void selectSort(int[] a){
-		for(int i=0;i<a.length;i++){
-			int min = i;
-			for(int j = i+1;j<a.length;j++){
-				if(a[j]<a[min]){
-					int temp = a[min];
-					a[min] = a[j];
-					a[j] = temp;
-					min = j;
-				}
+	for(int i=0;i<a.length;i++){
+		int min = i;
+		for(int j = i+1;j<a.length;j++){
+			if(a[j]<a[min]){
+				int temp = a[min];
+				a[min] = a[j];
+				a[j] = temp;
+				min = j;
 			}
-			
 		}
-		for(int k = 0;k<a.length;k++){
-			System.out.print(a[k]+",");
-		}
+
+	}
+	for(int k = 0;k<a.length;k++){
+		System.out.print(a[k]+",");
+	}
 		
 }
 
@@ -39,39 +39,43 @@ public static void selectSort(int[] a){
 
 Java实现：
 public static void insertSort(int[] b){
-		for(int i=1;i<b.length;i++){
-			//将a[i]插入到a[i-1],a[i-2]...中去
-			for(int j = i;j>0;j--){
-				if(b[j]<b[j-1]){
-					int temp = b[j];
-					b[j] = b[j-1];
-					b[j-1] = temp;
-				}
+	for(int i=1;i<b.length;i++){
+		//将a[i]插入到a[i-1],a[i-2]...中去
+		for(int j = i;j>0;j--){
+			if(b[j]<b[j-1]){
+				int temp = b[j];
+				b[j] = b[j-1];
+				b[j-1] = temp;
 			}
 		}
-		for(int k = 0; k<b.length;k++){
-			System.out.println(b[k]);
-		}	
+	}
+	for(int k = 0; k<b.length;k++){
+		System.out.println(b[k]);
+	}	
 }
 
 如何提高插入排序的速度：在循环内部将较大的元素都向右移动而不总是交换两个元素，这样访问数组的次数就能减半。
 try：
 public static void newInsertSort(int[] a){
-		for(int i = 1;i<a.length;i++){
-			int temp = a[i];
-			int position = i;
-			for(int j = i;j>0;j--){
-				if(a[j]>temp){
-					a[j+1] = a[j];
-					position = j;
-				}
+	for(int i = 1;i<a.length;i++){
+		int temp = a[i];
+		int position = i;
+		for(int j = i;j>0;j--){
+			if(a[j]>temp){
+				a[j+1] = a[j];
+				position = j;
 			}
-			a[position] = temp;
-			
 		}
-		for(int k=0;k<a.length;k++){
-			System.out.println(a[k]);
-		}
+		a[position] = temp;
+
+	}
+	for(int k=0;k<a.length;k++){
+		System.out.println(a[k]);
+	}
 }
+
+
+三.希尔排序
+
 
 
