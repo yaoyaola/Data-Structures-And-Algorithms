@@ -1,0 +1,77 @@
+排序就是将一组对象按照某种逻辑顺序重新排列的过程。排序在商业数据处理和现代科学计算中有着重要地位。
+
+一.选择排序
+描述：
+1.找到数组中最小的那个元素。
+2.将它和数组中的第一个元素交换位置。
+3.从剩下的元素中，找出最小的元素，将它和数组中第二个元素交换位置，如此往复，直到排序完成。
+
+特点：
+1.运行时间和输入无关：为了找出最小元素而扫描一遍数组并不能为下一次扫描提供什么信息。（不管有序无序，扫描次数固定）
+2.数据移动是最少的：每次交换都会改变两个元素的值，交换次数和数组大小是线性关系N.
+
+Java实现：
+public static void selectSort(int[] a){
+		for(int i=0;i<a.length;i++){
+			int min = i;
+			for(int j = i+1;j<a.length;j++){
+				if(a[j]<a[min]){
+					int temp = a[min];
+					a[min] = a[j];
+					a[j] = temp;
+					min = j;
+				}
+			}
+			
+		}
+		for(int k = 0;k<a.length;k++){
+			System.out.print(a[k]+",");
+		}
+		
+}
+
+
+二.插入排序
+将元素放在适当的位置上，这个位置后面所有的元素都往后移动一位，就是插入排序。
+描述：
+对于0到N-1之间的每个i，将b[i]与 b[i-1]到b[0]之间比它小的依次有序的交换
+在索引i变化过程中，它的左侧都是有序的，当i到达右侧，排序完成。
+
+Java实现：
+public static void insertSort(int[] b){
+		for(int i=1;i<b.length;i++){
+			//将a[i]插入到a[i-1],a[i-2]...中去
+			for(int j = i;j>0;j--){
+				if(b[j]<b[j-1]){
+					int temp = b[j];
+					b[j] = b[j-1];
+					b[j-1] = temp;
+				}
+			}
+		}
+		for(int k = 0; k<b.length;k++){
+			System.out.println(b[k]);
+		}	
+}
+
+如何提高插入排序的速度：在循环内部将较大的元素都向右移动而不总是交换两个元素，这样访问数组的次数就能减半。
+try：
+public static void newInsertSort(int[] a){
+		for(int i = 1;i<a.length;i++){
+			int temp = a[i];
+			int position = i;
+			for(int j = i;j>0;j--){
+				if(a[j]>temp){
+					a[j+1] = a[j];
+					position = j;
+				}
+			}
+			a[position] = temp;
+			
+		}
+		for(int k=0;k<a.length;k++){
+			System.out.println(a[k]);
+		}
+}
+
+
